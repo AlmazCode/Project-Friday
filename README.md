@@ -13,7 +13,7 @@ Simple voice assistant in Python that executes predefined commands.
 
 ## Installation
 ```bash
-git clone https://github.com/AlmazCode/assistant.git
+git clone https://github.com/AlmazCode/Project-Friday.git
 cd assistant
 pip install -r requirements.txt
 ```
