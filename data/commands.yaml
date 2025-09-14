@@ -1,0 +1,46 @@
+HELLO:
+  HRU:
+    actions:
+      - { func: tts, args: ["Здравствуйте, {user}!"] }
+      - { func: tts, args: ["Как ваши дела?"] }
+  TIME:
+    actions:
+      - { func: tts, args: ["Сейчас {time}"] }
+  actions:
+    - { func: reply, args: ["GREETINGS"] }
+
+TIME:
+    actions:
+      - { func: tts, args: ["Сейчас {time}"] }
+
+SAY:
+  <ARG>:
+    actions:
+      - { func: tts, args: ["{0}"] }
+
+OPEN:
+  BROWSER:
+    actions:
+      - { func: launch_app, args: ["{browser}"] }
+  YOUTUBE:
+    actions:
+      - { func: open_url, args: ["{youtube}"] }
+  GITHUB:
+    actions:
+      - { func: open_url, args: ["{github}"] }
+  TIMER:
+    FOR:
+      <ARG>:
+          actions:
+            - { func: start_timer, args: ["{0}"] }
+    <ARG>:
+      actions:
+        - { func: start_timer, args: ["{0}"] }
+
+RANDOM_NUMBER:
+  FROM:
+    <ARG>:
+      TO:
+        <ARG>:
+          actions:
+            - { func: random_number, args: ["{0}", "{1}"] }
