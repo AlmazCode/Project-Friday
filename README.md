@@ -1,4 +1,4 @@
-# Assistant
+# Project Friday
 
 Simple voice assistant in Python that executes predefined commands.
 
