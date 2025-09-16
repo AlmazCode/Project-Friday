@@ -42,5 +42,6 @@ PHRASES.sort(key=lambda x: -len(x[0]))
 COMMANDS = Pather.load_yaml("data\\commands.yaml")
 
 # ===== Important data =====
-FIRST_START: bool               = Pather.read(Constants.Filenames.FIRST_START, True)
-USER_ALLOWED_STARTUP: bool    = Pather.read(Constants.Filenames.USER_ALLOWED_STARTUP, False)
+FIRST_START: bool           = Pather.read(Constants.Filenames.FIRST_START, True)
+USER_ALLOWED_STARTUP: bool  = Pather.read(Constants.Filenames.USER_ALLOWED_STARTUP, False)
+# CONSOLE_MODE = False

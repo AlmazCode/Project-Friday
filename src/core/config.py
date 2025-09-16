@@ -19,7 +19,7 @@ TEXT_ART_FONTS = [
 
 VOSK_MODEL = "vosk-model-small-ru-0.22"
 
-STARTUP_FILE =  "chp 65001\n" + \
+STARTUP_FILE =  "chcp 65001\n" + \
                 "python \"{0}\""
 
 # ===== Sounddevice settings =====

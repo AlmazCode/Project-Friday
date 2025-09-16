@@ -59,13 +59,21 @@ class Assistant:
     
     def listen(self, loop: bool = True) -> None | list[str]:
 
+        # if data.CONSOLE_MODE:
+        #     while data.CONSOLE_MODE:
+        #         text = input(">>> ")
+        #         tokens = self._process_text(text, loop)
+
+        #         if not loop:
+        #             return tokens
+
         with sd.RawInputStream(
             samplerate=SD_SAMPLERATE, blocksize=SD_BLOCKSIZE, dtype=SD_DTYPE,
             channels=SD_CHANNELS, callback=self._callback
         ):
             while 1:
-                data = self.queue.get()
-                if self.recognizer.AcceptWaveform(data):
+                q_data = self.queue.get()
+                if self.recognizer.AcceptWaveform(q_data):
                     text = self._get_text_from_result()
                     if text:
                         tokens = self._process_text(text, loop)

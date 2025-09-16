@@ -14,7 +14,7 @@ Simple voice assistant in Python that executes predefined commands.
 ## Installation
 ```bash
 git clone https://github.com/AlmazCode/Project-Friday.git
-cd assistant
+cd Project-Friday
 pip install -r requirements.txt
 ```
 
