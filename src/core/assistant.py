@@ -3,13 +3,13 @@ from .constants import Constants
 from .config import *
 from .lexer import lexer
 from .parser import parser
+from .equalizer.equalizer_visualizer import EqualizerVisualizer
 
 from modules import Pather, WORK_DIR, STARTUP_PATH
 from modules import commands
 from modules import Console
 
 from art import tprint
-from typing import NoReturn
 from vosk import Model, KaldiRecognizer
 from queue import Queue
 
@@ -21,11 +21,19 @@ import os
 
 class Assistant:
 
-    def __init__(self) -> None:
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+    def __init__(self, equalizer: EqualizerVisualizer = None) -> None:
         
         self.model = Model(Pather.collect_path("models", VOSK_MODEL))
         self.recognizer = KaldiRecognizer(self.model, SD_SAMPLERATE)
         self.queue = Queue()
+        self.equalizer = equalizer
 
         ...
 
@@ -121,7 +129,8 @@ class Assistant:
             Console.log("The functions have been executed:\n" + "\n".join(executed_actions))
     
     def _callback(self, indata, frames, time, status) -> None:
-        self.queue.put(bytes(indata))
+        if self.equalizer and self.equalizer.audio_processor._get_current_time_ms() == -1:
+            self.queue.put(bytes(indata))
     
     def _create_startup_file(self) -> str:
 

@@ -29,13 +29,16 @@ pyttsx3_voice_engine.setProperty("volume", 1)
 # ===== Functions =====
 
 def tts(*args):
+    from core import Assistant
+
     text = " ".join(args)
+    file_name = Pather.collect_path("data", hashlib.sha256(text.encode()).hexdigest() + ".mp3")
 
     # offline mode
     if not data.HAS_INTERNET: # uses PYTTSX3
         
-        pyttsx3_voice_engine.say(text)
-        pyttsx3_voice_engine.runAndWait()
+        pyttsx3_voice_engine.save_to_file(file_name)
+        Assistant._instance.equalizer.play_audio(file_name)
     
     # online mode
     elif data.HAS_INTERNET: # uses GTTS
@@ -43,12 +46,8 @@ def tts(*args):
         file_name = Pather.collect_path("data", hashlib.sha256(text.encode()).hexdigest() + ".mp3")
         voice = gTTS(text = text, lang = "ru", slow = False)
         voice.save(file_name)
-        
-        player = pygame.mixer.Sound(file_name)
-        player.play()
-        
-        os.remove(file_name)
-        time.sleep(player.get_length())
+
+        Assistant._instance.equalizer.play_audio(file_name)
 
 def cyrillic_to_latin(text: str) -> str:
     return translit(text, 'ru', reversed=True)

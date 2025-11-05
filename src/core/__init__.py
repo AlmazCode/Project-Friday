@@ -3,3 +3,4 @@ from .parser import parser
 
 from . import data
 from . import config
+from core.assistant import Assistant
