@@ -1,7 +1,7 @@
 import datetime
 import platform
 
-from .config import USER_NAME, ASSISTANT_NAME
+from core.config import USER_NAME, ASSISTANT_NAME
 from .constants import Constants
 
 from modules.serialization.pather import Pather

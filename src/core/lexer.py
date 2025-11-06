@@ -1,4 +1,4 @@
-from .data import PHRASES
+from .data import PHRASES, VARIANT_TO_DIGIT
 
 import re
 

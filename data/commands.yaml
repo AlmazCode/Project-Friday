@@ -44,3 +44,47 @@ RANDOM_NUMBER:
         <ARG>:
           actions:
             - { func: random_number, args: ["{0}", "{1}"] }
+
+THX:
+  actions:
+    - { func: tts, args: ["Пожалуйста! Всегда рада помочь!"] }
+    
+ME_HRU:
+  actions:
+    - { func: tts, args: ["У меня все в порядке, работаю и жду ваших команд!"] }
+    
+I_LOVE_YOU:
+  actions:
+    - { func: tts, args: ["Мне очень приятно, {user}. Я вас тоже ценю!"] }
+
+JOKE:
+  actions:
+    - { func: tts, args: ["С удовольствием!"] }
+    - { func: get_joke, args: [] }
+
+SEARCH:
+  <ARG>:
+    actions:
+      - { func: tts, args: ["Сейчас поищу в интернете: {0}"] }
+      - { func: search, args: ["{0}"] }
+
+WHAT_IS:
+  <ARG>:
+    actions:
+      - { func: tts, args: ["Давайте узнаем, что это такое."] }
+      - { func: search, args: ["{0}"] }
+
+WEATHER:
+  actions:
+    - { func: tts, args: ["Ищу информацию о погоде."] }
+    - { func: search_web, args: ["погода сейчас"] }
+  <ARG>:
+    actions:
+    - { func: tts, args: ["Ищу погоду в городе {0}"] }
+    - { func: search_web, args: ["погода в {0}"] }
+
+CALCULATE:
+  <ARG>:
+    actions:
+      - { func: tts, args: ["Результат вычисления:"] }
+      - { func: calculate, args: ["{0}"], convert_digits: true }

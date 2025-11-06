@@ -134,7 +134,7 @@ class Assistant:
     
     def _create_startup_file(self) -> str:
 
-        path = os.path.join(STARTUP_PATH, "assistant.bat")
+        path = os.path.join(STARTUP_PATH, STARTUP_FILE_NAME + ".bat")
         with open(path, "w+", encoding = "utf-8") as f:
             f.write(
                 STARTUP_FILE.format(Pather.collect_path("src", "main.py"))

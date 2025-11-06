@@ -10,15 +10,16 @@ import threading
 
 from core.assistant import Assistant
 from core.equalizer.equalizer_visualizer import EqualizerVisualizer
+from core.config import VERSION
 
 equalizer = EqualizerVisualizer(
-    caption="Project Friday",
+    caption=f"Project Friday {VERSION}",
     width=1280,
     height=720
 )
 
 assistant = Assistant(
-    equalizer=None
+    equalizer=equalizer
 )
 assistant_thread = threading.Thread(target=assistant.listen, daemon=True)
 assistant_thread.start()
