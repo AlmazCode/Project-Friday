@@ -38,7 +38,7 @@ def tts(*args: tuple[str]) -> None:
     # offline mode; uses Pyttsx3 library
     if not data.HAS_INTERNET:
         
-        pyttsx3_voice_engine.save_to_file(file_name)
+        pyttsx3_voice_engine.save_to_file(text, file_name)
         Assistant._instance.equalizer.play_audio(file_name)
     
     # online mode; uses Google Text To Speech library
@@ -103,7 +103,7 @@ def random_number(a: str, b: str) -> None:
         tts(str(random.randint(a, b)))
 
 
-def search(query: str, lang: str = 'ru', sentences: int = 5) -> str:
+def wikipedia_search(query: str, lang: str = 'ru', sentences: int = 5) -> str:
     """
     Fetches a brief summary from Wikipedia for a given query.
 
@@ -145,5 +145,10 @@ def search(query: str, lang: str = 'ru', sentences: int = 5) -> str:
         # Catch all other potential errors (e.g., network issues)
         Console.error(f"An error occurred while searching for '{query}': {e}")
         return WP_ANOTHER_ERROR
+
+def search(query: str) -> None:
+    tts(
+        wikipedia_search(query)
+    )
 
 #endregion

@@ -17,7 +17,7 @@ CONTEXT = {
     "assistant": ASSISTANT_NAME,
     "time": datetime.datetime.now().strftime("%H:%M"),
     "browser": get_browser_path(),
-    "youtube": "https://www.youtube.com/",
+    "youtube": "https://youtube.com",
     "github": "https://github.com/"
 }
 

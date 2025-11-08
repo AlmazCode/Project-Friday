@@ -18,7 +18,7 @@ VOSK_MODEL      = "vosk-model-small-ru-0.22"
 STARTUP_FILE    = \
     "chcp 65001\n" + \
     "python \"{0}\""
-STARTUP_FILE_NAME = f"assistant-[{VERSION}]-startup"
+STARTUP_FILE_NAME = f"assistant-startup"
 
 # ===== Sounddevice settings =====
 SD_SAMPLERATE   = 16000

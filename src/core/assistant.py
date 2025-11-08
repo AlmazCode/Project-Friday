@@ -51,29 +51,22 @@ class Assistant:
         else:
             Console.warning("You're offline")
 
-        if data.FIRST_START:
-            commands.tts(FISRT_START_TEXT)
-            Pather.save(Constants.Filenames.FIRST_START, False)
-            commands.tts(CAN_ADD_AUTOSTART_TEXT)
-
-            if self.yn_listen():
-                Pather.save(Constants.Filenames.USER_ALLOWED_STARTUP, True)
-                path = self._create_startup_file()
-                Console.log(f"The startup file was created at this path: {path}")
-        
-        else:
-            commands.reply("GREETINGS")
-
     
     def listen(self, loop: bool = True) -> None | list[str]:
 
-        # if data.CONSOLE_MODE:
-        #     while data.CONSOLE_MODE:
-        #         text = input(">>> ")
-        #         tokens = self._process_text(text, loop)
+        if loop:
+            if data.FIRST_START:
+                commands.tts(FISRT_START_TEXT)
+                Pather.save(Constants.Filenames.FIRST_START, False)
+                commands.tts(CAN_ADD_AUTOSTART_TEXT)
 
-        #         if not loop:
-        #             return tokens
+                if self.yn_listen():
+                    Pather.save(Constants.Filenames.USER_ALLOWED_STARTUP, True)
+                    path = self._create_startup_file()
+                    Console.log(f"The startup file was created at this path: {path}")
+            
+            else:
+                commands.reply("GREETINGS")
 
         with sd.RawInputStream(
             samplerate=SD_SAMPLERATE, blocksize=SD_BLOCKSIZE, dtype=SD_DTYPE,
