@@ -5,7 +5,7 @@ from .lexer import lexer
 from .parser import parser
 from .equalizer.equalizer_visualizer import EqualizerVisualizer
 
-from modules import Pather, WORK_DIR, STARTUP_PATH
+from modules import Pather
 from modules import commands
 from modules import Console
 
@@ -127,7 +127,7 @@ class Assistant:
     
     def _create_startup_file(self) -> str:
 
-        path = os.path.join(STARTUP_PATH, STARTUP_FILE_NAME + ".bat")
+        path = os.path.join(Pather.STARTUP_PATH, STARTUP_FILE_NAME + ".bat")
         with open(path, "w+", encoding = "utf-8") as f:
             f.write(
                 STARTUP_FILE.format(Pather.collect_path("src", "main.py"))

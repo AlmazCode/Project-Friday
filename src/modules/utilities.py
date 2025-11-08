@@ -34,10 +34,6 @@ def get_browser_path() -> str | None:
             return None
 
 def has_internet(host="8.8.8.8", port=53, timeout=3):
-    """
-    Проверка интернета через попытку соединения с Google DNS (8.8.8.8:53).
-    Возвращает True, если удалось соединиться.
-    """
     try:
         socket.setdefaulttimeout(timeout)
         socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
