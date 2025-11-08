@@ -1,6 +1,6 @@
 from .serialization.pather import Pather
 from .console import Console
-from .utilities import tokens_to_digits, encode_text
+from .utilities import tokens_to_digits
 from core import data
 
 from core.config import (
@@ -33,7 +33,7 @@ def tts(*args: tuple[str]) -> None:
     from core import Assistant
 
     text = " ".join(args)
-    file_name = Pather.collect_path("data", encode_text(text) + ".mp3")
+    file_name = Pather.collect_path("data", Pather.string_to_sha256(text) + ".mp3")
 
     # offline mode; uses Pyttsx3 library
     if not data.HAS_INTERNET:

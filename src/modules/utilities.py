@@ -3,14 +3,10 @@ from .console import Console
 from core import data
 
 import socket
-import hashlib
 
 
 def tokens_to_digits(tokens: list[str]) -> list[int]:
     return [data.VARIANT_TO_DIGIT[n] for n in tokens if n in data.VARIANT_TO_DIGIT]
-
-def encode_text(text: str) -> str:
-    return hashlib.sha256(text.encode()).hexdigest()
 
 def get_browser_path() -> str | None:
 
